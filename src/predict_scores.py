@@ -3,7 +3,7 @@ import joblib
 from feature_engineering import load_and_engineer
 import numpy as np
 
-# load features
+# load 
 df = load_and_engineer("C:/Users/Sonwa/AI_OA/data/user-wallet-transactions.json")
 
 # load trained model

@@ -4,10 +4,9 @@ import joblib
 from feature_engineering import load_and_engineer
 import sklearn
 import numpy as np
-# load features
+
 df = load_and_engineer("C:/Users/Sonwa/AI_OA/data/user-wallet-transactions.json")
 
-# create synthetic label
 df["credit_score"] = (
     700
     - (df["liquidation_rate"].clip(upper=1.0) * 400)
