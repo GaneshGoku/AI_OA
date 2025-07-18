@@ -1,6 +1,6 @@
 ## Aave V2 Wallet Credit Scoring
 🔷 Predicting credit scores (0–1000) for wallets interacting with Aave V2, based solely on historical transaction behavior.
----
+
 
 ## Overview
 
