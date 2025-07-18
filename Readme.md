@@ -115,7 +115,11 @@ Save results to: data/wallet_scores.csv
 ## How to Run
 
 pip install -r requirements.txt
+
 python src/feature_engineering.py
+
 python src/train_xgb.py
+
 python src/predict_scores.py
+
 
