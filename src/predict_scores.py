@@ -20,4 +20,4 @@ df_scores = pd.DataFrame({
 })
 
 df_scores.to_csv("C:/Users/Sonwa/AI_OA/data/wallet_score.csv", index=False)
-print("✅ Predicted scores saved to data/wallet_score.csv")
+print("Predicted scores saved to data/wallet_score.csv")

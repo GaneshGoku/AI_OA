@@ -59,4 +59,4 @@ def load_and_engineer(json_file):
 if __name__ == "__main__":
     df = load_and_engineer("C:/Users/Sonwa/AI_OA/data/user-wallet-transactions.json")
     df.to_csv("C:/Users/Sonwa/AI_OA/data/wallet_features.csv", index=False)
-    print("✅ Wallet features saved to data/wallet_features.csv")
+    print(" Wallet features saved to data/wallet_features.csv")

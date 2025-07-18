@@ -35,4 +35,4 @@ model = xgb.XGBRegressor(
 model.fit(X, y)
 
 joblib.dump(model, "C:/Users/Sonwa/AI_OA/model/credit_score_xgb.pkl")
-print("✅ Model trained and saved to models/credit_score_xgb.pkl")
+print(" Model trained and saved to models/credit_score_xgb.pkl")
