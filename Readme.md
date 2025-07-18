@@ -33,3 +33,31 @@ Neural nets are overkill given structured tabular data and synthetic labels
 Linear models cannot capture non-linear risk patterns effectively
 
 XGBoost is well-suited for credit scoring problems in practice.
+
+                ┌──────────────────────────┐
+                │  Raw JSON transactions   │
+                │ user-wallet-transactions │
+                └──────────────┬───────────┘
+                               │
+            ┌──────────────────▼──────────────────┐
+            │ Feature Engineering (Python script)│
+            │  → Aggregate wallet-level features │
+            └──────────────────┬──────────────────┘
+                               │
+               ┌───────────────▼───────────────┐
+               │  Synthetic labels generation │
+               │   (based on risk heuristics) │
+               └───────────────┬──────────────┘
+                               │
+                ┌──────────────▼─────────────┐
+                │   Model Training (XGBoost) │
+                │   Input: features + labels │
+                │   Output: trained model    │
+                └──────────────┬─────────────┘
+                               │
+               ┌───────────────▼──────────────┐
+               │ Scoring new wallets          │
+               │   (with trained model)       │
+               │ Output: wallet, credit_score│
+               └──────────────────────────────┘
+
