@@ -61,3 +61,61 @@ XGBoost is well-suited for credit scoring problems in practice.
                │ Output: wallet, credit_score│
                └──────────────────────────────┘
 
+
+## Processing Flow
+
+# Feature Engineering
+
+Parse raw JSON file (data/user-wallet-transactions.json)
+
+Aggregate transaction records into wallet-level behavioral features:
+
+n_tx: total transactions
+
+n_deposits, n_borrows, n_repays, n_liquidations
+
+total_deposit_usd, total_borrow_usd, total_repay_usd
+
+active_days: unique activity days
+
+borrow_to_deposit_ratio
+
+repay_to_borrow_ratio
+
+liquidation_rate
+
+Output: data/wallet_features.csv
+
+# Synthetic Labeling & Model Training
+
+Since true credit scores are not available, synthetic labels are generated based on domain-driven risk heuristics:
+
+High liquidation rate → penalized
+
+High borrow-to-deposit ratio (>0.7) → penalized
+
+High repay-to-borrow ratio (~1.0) → rewarded
+
+High activity & high volume → rewarded
+
+Final score clipped to 0–1000, base = 700 ± 300.
+
+Model: XGBoostRegressor
+
+Trained on engineered features + synthetic labels.
+
+Model saved to: models/credit_score_xgb.pkl
+
+# Scoring New Wallets
+
+Use trained model to predict credit scores for each wallet.
+
+Save results to: data/wallet_scores.csv
+
+## How to Run
+
+pip install -r requirements.txt
+python src/feature_engineering.py
+python src/train_xgb.py
+python src/predict_scores.py
+
